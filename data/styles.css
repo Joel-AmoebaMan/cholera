@@ -1,0 +1,60 @@
+
+body {
+    background-color:#E7E8E6;
+    font-family:spectral;
+    color:black;
+    text-align:center;
+  }
+img {
+  width:300;
+  position:center;
+  align:center;
+  z-index:0;
+  opacity:100%;
+}
+
+h1 {
+    font-size:25px;
+    font-weight: bolder;
+    line-height:22px;
+  }
+h2 {
+  font-size:23px;
+  font-weight: bolder;
+}
+p {
+  font-size:12px;
+  font-weight: normal;
+  }
+svg {
+  border:solid 3px black;
+  opacity:90%;
+}
+.axis line {
+  fill:none;
+  stroke:black;
+  shape-rendering:crispEdges;
+}
+.axis text {
+  font-family:spectral;
+  font-size:10px;
+}
+.grid-container {
+  display:grid;
+  grid-template-columns:400px 400px;
+  background-color: gray
+  border: 1px darkGray;
+}
+.grid-item {
+  background-color:inherit;
+  text-align:left;
+  margin: 2px;
+}
+div.tooltip {
+  position:absolute;
+  text-align:center;
+  padding: .2rem;
+  background:white;
+  color:black;
+  font-size: .7rem;
+}

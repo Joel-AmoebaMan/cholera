@@ -1,0 +1,47 @@
+<script type="text/javascript">
+<!--TIMELINE SVG -->
+  const timelinesvg = d3.select("body").append("svg").attr('width',500).attr('height',100).style('background-color', '#E8E4A5');
+      var timeScale = d3.scaleLinear().domain([0,42]).range([10,490]);
+      timelinesvg.append('text').text("TIMELINE").attr('x',10).attr('y',25);
+      timelinesvg.append("rect").attr("height", 30).attr("width", 500 ).attr("fill","#EEE3D4").attr('y',40);
+      timelinesvg.append("line").attr("x1", 10).attr("x2",490).attr("y1",50).attr("y2",50).attr("stroke", "black");
+
+<!--DRAW DEATHS ON TIMELINE -->
+      var deathDaysData = [[1,2],[2,2],[5,3],[16,2],[40,3],[23,6]];
+      d3.csv("deathdays.csv", function(data) {
+        deathDaysData = data;
+        console.log(deathDaysData);
+        timelinesvg.selectAll('circle').data(data).enter().append('circle').attr('fill','blue').attr('r',function(d) {return d[1]}).attr('cx',function(d,i){return timeScale(i);}).attr('cy',50);});
+
+        console.log(deathDaysData);
+        timelinesvg.selectAll('rect').data(deathDaysData).enter().append('rect').attr('height',10).attr('width',8).attr('x',function(d,i){return timeScale(i);}).attr('fill','white').attr('y',40);
+        timelinesvg.selectAll("circle").data(deathDaysData).enter().append("circle").attr("fill", "black").attr("r",function(d) {return d[1]}).attr("cx", function(d,i){return timeScale(i);}).attr("cy",50);
+
+
+
+<!-- MAP SVG CREATION -->
+  const mapsvg = d3.select("body").append("svg").attr("width",500).attr("height",500).style('background-color','#E8E4A4');
+      mapsvg.append("text").text('LONDON (CIRCA 1848)').attr("x",10).attr('y',25);
+      var Xscale = d3.scaleLinear().domain([0,20]).range([0,500]);
+      var Yscale = d3.scaleLinear().domain([0,20]).range([0,500]);
+
+<!--DRAW THE PUMPS -->
+      var pumpsData = [[1,2],[3,4],[6,7],[7,8],[12,28],[12,16]];
+      d3.csv("pumps.csv", function(data) {pumpsData = data; console.log(pumpsData);});
+      mapsvg.selectAll('rect').data(pumpsData).enter().append('rect').attr('x',function(d) {return Xscale(d[0]);}).attr('y',function(d){return Yscale(d[1]);}).attr("height",10).attr('width',10).attr('fill','blue');
+
+<!-- DRAW THE STREETS -->
+      var streetData = [[1,12,3,14],[14,4,3,13]]
+      d3.json("streets.json", function(d) {const streetData = data; console.log(streetDatas);});
+      mapsvg.selectAll("line").data(streetData).enter().append("line").attr("x1",function(d){return Xscale(d[0]);}).attr("x2",function(d){return Xscale(d[1]);}).attr("y1",function(d){return Yscale(d[2]);}).attr("y2",function(d){return Yscale(d[3]);}).attr("stroke", "black");
+
+<!-- DRAW THE DEATH LOCATIONS -->
+    var deathsAgeSexData = [[2,2,4,1],[4,4,5,1],[4,2,6,0],[8,6,5,0]];
+    d3.csv("deaths_age_sex.csv", function(data) {deathsAgeSexData = data; console.log(deathsAgeSexData);});
+    mapsvg.selectAll('circle').data(deathsAgeSexData).enter().append('circle').attr('cx',function(d){return Xscale(d[0]);}).attr('cy',function(d){return Yscale(d[1]);}).attr('r',function(d){return d[2]});
+<!--MAKE INTERACTIONS -->
+  mapsvg.selectAll('circle').on('mouseover', console.log("over"));
+
+
+
+</script>
