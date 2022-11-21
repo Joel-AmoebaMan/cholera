@@ -65,7 +65,7 @@
 
 
        //DRAW THE MAP
-       d3.json("data\streets.json").then(function(data){
+       d3.json("data/streets.json").then(function(data){
          console.log('1');
          //for (var i = 0; i< data.length; i++) {
            //var pointA = data[i][0];
@@ -96,7 +96,7 @@
 
        });
        //DRAW THE DEATH LOCATIONS
-       d3.csv("data\deaths_age_sex.csv", function (d) {
+       d3.csv("data/deaths_age_sex.csv", function (d) {
          var deathX = d.x;
          var deathY = d.y;
          var deathAge =d.age;
@@ -133,7 +133,7 @@
 
 
        //DRAW a barchart
-       d3.csv("data\deathdays.csv", function(date,i){
+       d3.csv("data/deathdays.csv", function(date,i){
          var index = i;
          var dates = date.date;
          var deaths = date.deaths;
