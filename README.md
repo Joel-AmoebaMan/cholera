@@ -20,7 +20,7 @@
               <!-- <img src="microscopicCholera.jpg" > -->
             </div>
             <div class = 'grid-item'>
-              <a href="documentation.html">Documentation</a><br>
+              <a href="data\documentation.html">Documentation</a><br>
               <a href="https://youtu.be/rppXWly2ywc">Video</a>
             </div>
             
@@ -65,7 +65,7 @@
 
 
        //DRAW THE MAP
-       d3.json("streets.json").then(function(data){
+       d3.json("data\streets.json").then(function(data){
          console.log('1');
          //for (var i = 0; i< data.length; i++) {
            //var pointA = data[i][0];
@@ -96,7 +96,7 @@
 
        });
        //DRAW THE DEATH LOCATIONS
-       d3.csv("deaths_age_sex.csv", function (d) {
+       d3.csv("data\deaths_age_sex.csv", function (d) {
          var deathX = d.x;
          var deathY = d.y;
          var deathAge =d.age;
@@ -118,7 +118,7 @@
         //provide data upon a hover
        });
        //DRAW THE PUMP LOCATIONS
-       d3.csv("pumps.csv", function (data) {
+       d3.csv("data\pumps.csv", function (data) {
          var pumpX = data.x;
          var pumpY = data.y;
          var pump = d3.select('svg').append('circle');
@@ -133,7 +133,7 @@
 
 
        //DRAW a barchart
-       d3.csv("deathdays.csv", function(date,i){
+       d3.csv("data\deathdays.csv", function(date,i){
          var index = i;
          var dates = date.date;
          var deaths = date.deaths;
