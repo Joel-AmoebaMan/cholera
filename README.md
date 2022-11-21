@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -118,7 +118,7 @@
         //provide data upon a hover
        });
        //DRAW THE PUMP LOCATIONS
-       d3.csv("data\pumps.csv", function (data) {
+       d3.csv("data/pumps.csv", function (data) {
          var pumpX = data.x;
          var pumpY = data.y;
          var pump = d3.select('svg').append('circle');
@@ -200,7 +200,7 @@
       var people = svg.selectAll('circle').data(populace).enter().append('circle');
        people.attr('cx', function(d) {return xscale(populace[0]*100);}).attr('cy',function(d) {return populace[1];}).attr('r',10).attr('fill','brown');
  </script>
-      //</script>
+
 
   </body>
 </html>
